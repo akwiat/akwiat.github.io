@@ -1,7 +1,7 @@
 
 function UnitarityGraphics(unitarityClient) {
-	var InternalGameSize = 2.5;
-	var ParticleWidth = .03;
+	var InternalGameSize = 5;
+	var ParticleWidth = .05;
 	/*
 	var ShipWidth = 25;
 	var ShipAspect = 2;
@@ -79,8 +79,10 @@ function UnitarityGraphics(unitarityClient) {
 }
 UnitarityGraphics.prototype.addScalar = function(universe, particleNumber) {
 	var obj = Crafty.e("Particle").setUniverse(universe).setParticleNum(particleNumber);
-	if (particleNumber == 1)
+	if (particleNumber == 0 && !this.nomorereds) {
 		obj.color("red");
+		this.nomorereds = true;
+	}
 	//debugger;
 	return obj;
 }
