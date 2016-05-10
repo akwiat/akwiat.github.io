@@ -50,14 +50,15 @@ function makeBaseUniverse() {
 	];
 	return data;
 }
-function makeParticleUniverse(p) {
+function makeParticleUniverse(alexUnitaritySync) {
 
 var rp = Math.random();
-//var rt = Math.random() * Sf;
-//var rt = p*0.1;
-var rt = Math.random()/10;
+
+//var rt = Math.random()/10;
+var async = 1.0 - alexUnitaritySync;
+var rt = Math.random()*async;
 //rt = 0;
-console.log(rt);
+//console.log(rt);
 //if (p != 0) rt = 0; else rt = .5;
 	var data = [
 
@@ -70,12 +71,16 @@ console.log(rt);
 	];
 	return data;
 }
-function makeMultiverse() {
+function makeMultiverse(pnum, sync) {
 	var ret = [];
 	ret.push(makeBaseUniverse());
-	var pnum = 20;
+	//var pnum = 30;
+	//var pnum = this.alexUnitarityParticlesNum;
+	//debugger;
+
+	console.log(pnum);
 	for (var i=0; i < pnum; i++) {
-		ret.push(makeParticleUniverse(i));
+		ret.push(makeParticleUniverse(sync));
 	}
 	return ret;
 }
@@ -107,12 +112,30 @@ function makeStateFromData(data) {
 	}
 	return [ret,initStateVector];
 }
-function UnitarityClient() {  
+function UnitarityClient(pnum, sync) {  
+	this.alexUnitarityParticlesNum = pnum;
+	this.alexUnitaritySync = sync;
+
 	this.graphics = new UnitarityGraphics(this);
-	var inputState = makeMultiverse();
+	this.objs = [];
+	this.createMultiverse();
+
+	
+
+}
+UnitarityClient.prototype.clearUniverse = function() {
+	for (var i=0; i < this.objs.length; i++) {
+		this.graphics.removeObj(this.objs[i]);
+	}
+	this.graphics.resetRed();
+}
+UnitarityClient.prototype.createMultiverse = function() {
+	this.clearUniverse();
+		var inputState = makeMultiverse(this.alexUnitarityParticlesNum, this.alexUnitaritySync);
 	//var returnedState = inputState || makeStateFromData(stateData);
 	//var returnedState = inputState || makeStateFromData(makeMultiverse());
 	this.multiverse = [];
+
 	for (var i=0; i < inputState.length; i++) {
 
 		var returnedState = makeStateFromData(inputState[i]);
@@ -123,7 +146,8 @@ function UnitarityClient() {
 		var universe = new Universe(state, initialState);
 		var l = state[0].realComponents.length; //fix for multiple dims
 		for (var k=0; k < l; k++) {
-			this.graphics.addScalar(universe, k);
+			var obj = this.graphics.addScalar(universe, k);
+			this.objs.push(obj);
 
 		this.multiverse.push(universe);
 	}

@@ -1,9 +1,32 @@
 <html>
   <head>
   	<Title>Unitarity -- Alex Kwiatkowski</Title>
+  	<link rel="stylesheet" type="text/css" href="Unitarity.css" />
   </head>
   <body>
     <div id="game"></div>
+
+        <div id="hud">
+    	Particles: (1-50)      <input type="text" id="particlesText" value=30><br>
+    	Synchronization: (0-1.0) <input type="text" id="syncText" value=0.9><br>
+    	<button type="button" id="applyButton">Apply</button>
+    	<br/>
+
+    	
+
+    </div>
+    <div id="hud2">
+    	Select your team
+    	 <!--
+      <div id="innerTeamSelect">
+        
+       
+        <button type="button" id="aliensButton">Aliens</button>
+        <button type="button" id="humansButton">Humans</button>
+        </div>
+    	-->
+      
+    </div>
     <script>var ___alexnorequire = true; </script>
 		<script src="crafty.js"></script>
 
@@ -31,7 +54,39 @@
 		
 
     <script>
-      var UClient = new UnitarityClient();
+      	//var alexUnitarityParticlesNum = 20;
+    	//var alexUnitaritySync = 0.2;
+    	this.UClient = new UnitarityClient(20, 0.2);
+  		//this.UClient.alexUnitarityParticlesNum = 20;
+  		//this.UClient.alexUnitaritySync = 0.2;
+      var applyButton = document.getElementById("applyButton");
+      var particlesText = document.getElementById("particlesText");
+      var syncText = document.getElementById("syncText");
+      applyButton.onclick = function() {
+      	console.log(particlesText.value);
+      	var pnum = parseInt(particlesText.value);
+      	console.log(pnum);
+      	if (!pnum) pnum = 30;
+      	else if (pnum < 1) pnum = 1;
+      	else if (pnum > 50) pnum = 50;
+
+      	particlesText.value = pnum;
+
+      	this.alexUnitarityParticlesNum = pnum;
+
+      	var sync = parseFloat(syncText.value);
+
+      	if (!sync) sync = 0.9;
+      	else if (sync < 0.0) sync = 0.0;
+      	else if (sync > 1.0) sync = 1.0;
+
+      	syncText.value = sync;
+      	this.alexUnitaritySync = sync;
+
+
+      	this.createMultiverse();
+      }.bind(this.UClient)
+      
     </script>
   </body>
 </html>

@@ -86,3 +86,9 @@ UnitarityGraphics.prototype.addScalar = function(universe, particleNumber) {
 	//debugger;
 	return obj;
 }
+UnitarityGraphics.prototype.removeObj = function(obj) {
+	obj.destroy();
+}
+UnitarityGraphics.prototype.resetRed = function() {
+	this.nomorereds = undefined;
+}
