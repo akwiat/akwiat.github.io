@@ -50,17 +50,32 @@ function makeBaseUniverse() {
 	];
 	return data;
 }
-function makeParticleUniverse(alexUnitaritySync) {
+function makeParticleUniverse(alexUnitaritySync, p) {
 
 var rp = Math.random();
 
 //var rt = Math.random()/10;
 var async = 1.0 - alexUnitaritySync;
 var rt = Math.random()*async;
-//rt = 0;
-//console.log(rt);
-//if (p != 0) rt = 0; else rt = .5;
-	var data = [
+
+var numDecimals = 7;
+var bigBaseTen = Math.pow(10,numDecimals);
+var smallAmplitude1 = (Math.random() * 2.0 - 1.0)*A0/100.0;
+var smallAmplitude2 = (Math.random() * 2.0 - 1.0)*A0/100.0;
+var randomBaseFreq = f0;
+var randomFreqMultiplier = f0/100.0;
+
+
+var randomFreq1 = randomBaseFreq + Math.random()*randomFreqMultiplier;
+randomFreq1 = Math.round(randomFreq1*bigBaseTen)/bigBaseTen;
+
+var randomFreq2 = randomBaseFreq + Math.random()*randomFreqMultiplier;
+randomFreq2 = Math.round(randomFreq2*bigBaseTen)/bigBaseTen;
+
+
+console.log(randomFreq1, smallAmplitude1);
+
+var data = [
 
 	[[1], f0, [A0, 0]],
 [[1], 0, [S0, 0+rp]],
@@ -68,7 +83,15 @@ var rt = Math.random()*async;
 [[1], 3*Sf, [S0/3, 0.25+rp - rt*3]],
 [[1], 5*Sf, [S0/5, 0.25+rp - rt*5]]
 
+//[[1], randomFreq1, [smallAmplitude, 0]]
+//[[1], 5*Sf, [S0/5, 0.25+rp - rt*5]]
+
 	];
+
+	//if (p==0) {
+		data.push( [[1], randomFreq1, [smallAmplitude1, 0]] );
+		data.push( [[1], randomFreq2, [smallAmplitude1, 0]] );
+	//}
 	return data;
 }
 function makeMultiverse(pnum, sync) {
@@ -80,7 +103,7 @@ function makeMultiverse(pnum, sync) {
 
 	console.log(pnum);
 	for (var i=0; i < pnum; i++) {
-		ret.push(makeParticleUniverse(sync));
+		ret.push(makeParticleUniverse(sync, i));
 	}
 	return ret;
 }
