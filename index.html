@@ -7,7 +7,7 @@
     <div id="game"></div>
 
         <div id="hud">
-    	Particles: (1-60)      <input type="text" id="particlesText" value=30><br>
+    	Particles: (1-120)      <input type="text" id="particlesText" value=30><br>
     	Synchronization: (0-1.0) <input type="text" id="syncText" value=0.9><br>
     	<button type="button" id="applyButton">Apply</button>
     	<br/>
@@ -57,7 +57,7 @@
       	console.log(pnum);
       	if (!pnum) pnum = 30;
       	else if (pnum < 1) pnum = 1;
-      	else if (pnum > 60) pnum = 60;
+      	else if (pnum > 120) pnum = 120;
       	//else pnum = 30;
 
       	particlesText.value = pnum;
