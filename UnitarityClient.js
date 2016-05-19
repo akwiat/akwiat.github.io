@@ -96,7 +96,7 @@ var data = [
 }
 function makeMultiverse(pnum, sync) {
 	var ret = [];
-	ret.push(makeBaseUniverse());
+	//ret.push(makeBaseUniverse());
 	//var pnum = 30;
 	//var pnum = this.alexUnitarityParticlesNum;
 	//debugger;
