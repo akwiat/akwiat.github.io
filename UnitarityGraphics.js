@@ -14,6 +14,8 @@ function UnitarityGraphics(unitarityClient) {
 	this.ratio = this.size/InternalGameSize;
 	var GraphicsRatio = this.ratio;
 	var GraphicsSize = this.size;
+	
+	Crafty.sprite("circle3.png", {particlecircle:[0,0,50,50]})
 
 	//var PlayersSupported = 2;
 	var convertToGameCoord = function(graphicsCoordX, graphicsCoordY) {
@@ -42,7 +44,7 @@ function UnitarityGraphics(unitarityClient) {
 	Crafty.background('#DFDFDF');
 	
 	Crafty.c("Particle", {
-		required: "2D, Canvas, Color",
+		required: "2D, Canvas, Color, particlecircle",
 		setUniverse: function(universe) {
 			this.universe = universe;
 			return this;
@@ -79,10 +81,12 @@ function UnitarityGraphics(unitarityClient) {
 }
 UnitarityGraphics.prototype.addScalar = function(universe, particleNumber) {
 	var obj = Crafty.e("Particle").setUniverse(universe).setParticleNum(particleNumber);
+	/*
 	if (particleNumber == 0 && !this.nomorereds) {
 		obj.color("red");
 		this.nomorereds = true;
 	}
+	*/
 	//debugger;
 	return obj;
 }
