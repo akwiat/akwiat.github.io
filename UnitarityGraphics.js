@@ -73,8 +73,8 @@ function UnitarityGraphics(unitarityClient) {
 	Crafty.c("BackgroundStars", {
 		required: "2D, Canvas, Color"
 		,init:function() {
-			var numStars = 1;
-			var starSize = 0.03*GraphicsRatio;
+			var numStars = 30;
+			var starSize = 0.1*GraphicsRatio;
 			var gameSize = InternalGameSize;
 			
 			for (var i=0; i < numStars; i++) {
@@ -91,7 +91,7 @@ function UnitarityGraphics(unitarityClient) {
 			}
 		}
 	});
-
+	Crafty.background('#081848');
 	Crafty.e("BackgroundStars");
 	Crafty.bind("EnterFrame", function() {
 		this.updateUniverse();
