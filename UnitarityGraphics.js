@@ -69,6 +69,27 @@ function UnitarityGraphics(unitarityClient) {
 			//this.y = 100;
 		}
 	});
+	
+	Crafty.c("BackgroundStars", {
+		required: "2D, Canvas, Color"
+		,init:function() {
+			var numStars = 30;
+			var starSize = 3.0*GraphicsRatio;
+			var gameSize = graphicsSettings.InternalGameSize;
+			for (var i=0; i < numStars; i++) {
+				var x = Math.random()*gameSize;
+				var y = Math.random()*gameSize;
+				var nEnt = Crafty.e("2D, Canvas, Color");
+				nEnt.color("#F2F2F1");
+				nEnt.w = starSize;
+				nEnt.h = nEnt.w;
+				graphicsObj.setEntityGraphicsCoords(nEnt, x, y);
+				this.attach(nEnt);
+			}
+		}
+	});
+
+	Crafty.e("BackgroundStars");
 	Crafty.bind("EnterFrame", function() {
 		this.updateUniverse();
 		Crafty.trigger("UpdateFromUniverse");
