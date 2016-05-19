@@ -80,13 +80,13 @@ function UnitarityGraphics(unitarityClient) {
 			for (var i=0; i < numStars; i++) {
 				var x = Math.random()*gameSize - gameSize/2;
 				var y = Math.random()*gameSize - gameSize/2;
-				x = 1; y = 1;
+			//	x = 1; y = 1;
 				var nEnt = Crafty.e("2D, Canvas, Color");
 				nEnt.color("#F2F2F1");
 				nEnt.w = starSize;
 				nEnt.h = nEnt.w;
 				var attrObj = convertToGraphicsCoord(x, y);
-				this.attr(attrObj);
+				nEnt.attr(attrObj);
 				//graphicsObj.setEntityGraphicsCoords(nEnt, x, y);
 				this.attach(nEnt);
 			}
