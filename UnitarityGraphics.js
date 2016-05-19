@@ -74,7 +74,7 @@ function UnitarityGraphics(unitarityClient) {
 		required: "2D, Canvas, Color"
 		,init:function() {
 			var numStars = 30;
-			var starSize = 3.0*GraphicsRatio;
+			var starSize = 0.03*GraphicsRatio;
 			var gameSize = InternalGameSize;
 			
 			for (var i=0; i < numStars; i++) {
