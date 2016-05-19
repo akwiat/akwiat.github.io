@@ -80,7 +80,7 @@ function UnitarityGraphics(unitarityClient) {
 			for (var i=0; i < numStars; i++) {
 				var x = Math.random()*gameSize - gameSize/2;
 				var y = Math.random()*gameSize - gameSize/2;
-				x = 0; y = 0;
+				x = 1; y = 1;
 				var nEnt = Crafty.e("2D, Canvas, Color");
 				nEnt.color("#F2F2F1");
 				nEnt.w = starSize;
