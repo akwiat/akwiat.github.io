@@ -84,7 +84,7 @@ function UnitarityGraphics(unitarityClient) {
 				nEnt.color("#F2F2F1");
 				nEnt.w = starSize;
 				nEnt.h = nEnt.w;
-				var attrObj = convertToGraphicsCoord(params[0], params[1]);
+				var attrObj = convertToGraphicsCoord(x, y);
 				this.attr(attrObj);
 				//graphicsObj.setEntityGraphicsCoords(nEnt, x, y);
 				this.attach(nEnt);
