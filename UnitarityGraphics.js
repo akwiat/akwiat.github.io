@@ -76,6 +76,7 @@ function UnitarityGraphics(unitarityClient) {
 			var numStars = 30;
 			var starSize = 3.0*GraphicsRatio;
 			var gameSize = InternalGameSize;
+			
 			for (var i=0; i < numStars; i++) {
 				var x = Math.random()*gameSize;
 				var y = Math.random()*gameSize;
