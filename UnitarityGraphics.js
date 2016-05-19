@@ -62,7 +62,7 @@ function UnitarityGraphics(unitarityClient) {
 			}
 		},
 		init: function() {
-			this.color("black");
+			//this.color("black");
 			this.origin("center");
 			//this.origin(10,10);
 			this.w = ParticleWidth * GraphicsRatio;
