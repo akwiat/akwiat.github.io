@@ -15,7 +15,7 @@ function UnitarityGraphics(unitarityClient) {
 	var GraphicsRatio = this.ratio;
 	var GraphicsSize = this.size;
 	
-	Crafty.sprite("particle.png", {particlecircle:[0,0,121,121]})
+	Crafty.sprite("particle2.png", {particlecircle:[0,0,121,121]})
 
 	//var PlayersSupported = 2;
 	var convertToGameCoord = function(graphicsCoordX, graphicsCoordY) {
