@@ -1,7 +1,7 @@
 
 function UnitarityGraphics(unitarityClient) {
 	var InternalGameSize = 6.7;
-	var ParticleWidth = .07;
+	var ParticleWidth = .1;
 	/*
 	var ShipWidth = 25;
 	var ShipAspect = 2;
