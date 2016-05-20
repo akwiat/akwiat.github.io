@@ -31,12 +31,25 @@
       var syncText = document.getElementById("syncText");
       
       applyButton.onclick = function() {
-      	console.log(particlesText.value);
-      	var pnum = parseInt(particlesText.value);
+      	var overrideString = "override";
+      	var particlesString = "";
+      	var pnum;
+      	if (particlesText.value.indexOf(overrideString) != -1) {
+      		particlesString = particlesText.value.slice(overrideString.length);
+      		pnum = parseInt(particlesString);
+      		
+      	} else {
+      		particlesString = particlesText.value;
+      		pnum = parseInt(particlesString);
+      		if (!pnum) pnum = 30;
+      		else if (pnum < 1) pnum = 1;
+      		else if (pnum > 1000) pnum = 1000;
+      		
+      	}
+      	console.log(particlesString);
+      	
       	console.log(pnum);
-      	if (!pnum) pnum = 30;
-      	else if (pnum < 1) pnum = 1;
-      	else if (pnum > 1000) pnum = 1000;
+
       	//else pnum = 30;
 
       	particlesText.value = pnum;
