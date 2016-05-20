@@ -6,14 +6,10 @@
   <body>
     <div id="game"></div>
 
-        <div id="hud">
-    	Particles: (1-360)      <input type="text" id="particlesText" value=30><br>
-    	Synchronization: (0-1.0) <input type="text" id="syncText" value=0.9><br>
-    	<button type="button" id="applyButton">Apply</button>
-    	<br/>
-
-    	
-
+      <div id="hud">
+      	Particles: (1-360)      <input type="text" id="particlesText" value=30><br>
+      	Synchronization: (0-1.0) <input type="text" id="syncText" value=0.9><br>
+      	<button type="button" id="applyButton">Apply</button>
     </div>
    
     <script>var ___alexnorequire = true; </script>
@@ -22,25 +18,7 @@
 		<script src="StationaryVector.js"></script>
 		<script src="Universe.js"></script>
 		<script src="UnitarityGraphics.js"></script>
-		<script src="UnitarityClient.js"></script>
-<!--
-		<script src="DiffObj.js"></script>
-		<script src="GameStateEntity.js"></script>
-		<script src="GameState.js"></script>
-		<script src="GameStructureCodes.js"></script>
-		<script src="GameStructure.js"></script>
-		<script src="ClientSocket.js"></script>
-		<script src="GameHandler.js"></script>
-		<script src="HandlerBridge.js"></script>
-		<script src="ServerBridge.js"></script>
-		<script src="ClientSocket.js"></script>
-
-		
-		<script src="HilbertsArrow.js"></script>
-		<script src="HilbertsArrowGraphics.js"></script>
-		<script src="HilbertsArrowClient.js"></script>
-		!-->
-		
+		<script src="UnitarityClient.js"></script>		
 
     <script>
       	//var alexUnitarityParticlesNum = 20;
@@ -51,6 +29,7 @@
       var applyButton = document.getElementById("applyButton");
       var particlesText = document.getElementById("particlesText");
       var syncText = document.getElementById("syncText");
+      
       applyButton.onclick = function() {
       	console.log(particlesText.value);
       	var pnum = parseInt(particlesText.value);
@@ -77,6 +56,19 @@
 
       	this.createMultiverse();
       }.bind(this.UClient)
+
+      particlesText.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode == 13) {
+          applyButton.click();
+        }
+      })
+      syncText.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode == 13) {
+          applyButton.click();
+        }
+      })
       
     </script>
   </body>

@@ -1,9 +1,44 @@
+body {
+	text-align: center;
+	background-color: rgb(8, 24, 72);
+}
+
+#game {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #hud {
 	font-family: "Courier New";
 	font-size: 12pt;
-    color: White;
+	line-height: 25pt;
+    color: white;
 	position: absolute;
 	top: 15;
 	left: 15;
-	z-index: 999;
+	text-align: center;
+}
+
+input {
+	font-family: "Courier New";
+	font-size: 12pt;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    width: 50px;
+    float: right;
+	background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+button {
+	font-family: "Courier New";
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: white;
+	border-radius: 0px;
+	border: none;
+	padding: 5px 15px;
+	margin-top: 12px;
 }
